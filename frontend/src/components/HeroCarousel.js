@@ -189,28 +189,40 @@ const HeroCarousel = () => {
   const slides = [
     {
       id: 1,
-      title: "Welcome to INITX",
-      subtitle: "Your ultimate destination for cutting-edge technology solutions. Experience innovation, reliability, and excellence in every service we provide.",
+      title: "Transform Your Business with AI",
+      subtitle: "Harness the power of artificial intelligence and machine learning to revolutionize your operations. Our expert AI development team creates custom solutions that drive innovation and competitive advantage.",
       gradient: "#0a0a0a 0%, #1a0033 30%, #330066 60%, #000000 100%",
-      primaryAction: "Get Started",
-      secondaryAction: "Watch Demo",
-      showLogo: true
+      primaryAction: "Explore AI Solutions",
+      secondaryAction: "Watch AI Demo",
+      showLogo: true,
+      keywords: "AI development, machine learning, artificial intelligence, custom AI solutions, business automation"
     },
     {
       id: 2,
-      title: "AI-Powered Solutions",
-      subtitle: "Harness the power of artificial intelligence with our advanced AI platform that learns, adapts, and evolves with your business needs.",
+      title: "Scalable Cloud Infrastructure",
+      subtitle: "Build robust, scalable applications with our cloud-native solutions. From AWS to Azure and Google Cloud, we architect infrastructure that grows with your business needs and ensures maximum uptime.",
       gradient: "#000000 0%, #001122 25%, #003366 50%, #0066cc 75%, #000033 100%",
-      primaryAction: "Explore AI",
-      secondaryAction: "Learn More"
+      primaryAction: "Cloud Solutions",
+      secondaryAction: "View Case Studies",
+      keywords: "cloud computing, AWS, Azure, Google Cloud, cloud migration, DevOps, scalable infrastructure"
     },
     {
       id: 3,
-      title: "Cloud Infrastructure",
-      subtitle: "Scalable, secure, and reliable cloud solutions that grow with your business. From startups to enterprises, we've got you covered.",
+      title: "Modern Web & Mobile Development",
+      subtitle: "Create exceptional digital experiences with our full-stack development expertise. From responsive web applications to native mobile apps, we deliver solutions that engage users and drive results.",
       gradient: "#0d0d0d 0%, #2d0a4e 25%, #5c1a6b 50%, #8b2f8b 75%, #1a0033 100%",
-      primaryAction: "Try Cloud",
-      secondaryAction: "Documentation"
+      primaryAction: "Start Your Project",
+      secondaryAction: "View Portfolio",
+      keywords: "web development, mobile app development, React, Node.js, full-stack development, responsive design"
+    },
+    {
+      id: 4,
+      title: "Digital Transformation Excellence",
+      subtitle: "Modernize your business processes with cutting-edge technology solutions. We help enterprises and startups navigate digital transformation with strategic consulting and implementation expertise.",
+      gradient: "#1a0033 0%, #4a0e4e 25%, #6a1b9a 50%, #8e24aa 75%, #2d0a4e 100%",
+      primaryAction: "Get Consultation",
+      secondaryAction: "Learn More",
+      keywords: "digital transformation, technology consulting, enterprise solutions, business modernization, tech strategy"
     }
   ];
 

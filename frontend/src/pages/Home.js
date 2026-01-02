@@ -6,10 +6,15 @@ import { Eye, Heart, User, Star, ArrowRight, CheckCircle, Users, Briefcase, Awar
 import FAQ from '../components/FAQ';
 import AnimatedCounter from '../components/AnimatedCounter';
 import SEO from '../components/SEO';
+import AdvancedSEO from '../components/AdvancedSEO';
+import SEOSchema from '../components/SEOSchema';
+import SEOPerformance from '../components/SEOPerformance';
 import WhyChooseUs from '../components/WhyChooseUs';
 import TrustSignals from '../components/TrustSignals';
 import CTABanner from '../components/CTABanner';
 import HeroCarousel from '../components/HeroCarousel';
+import { useSEO, useStructuredData, useFAQStructuredData } from '../hooks/useSEO';
+import { generateSEOData, combineKeywords } from '../utils/seoConfig';
 
 const Hero = styled.section`
   text-align: center;
@@ -718,6 +723,69 @@ const Home = () => {
     likes: Math.floor(Math.random() * 50) + 20
   }));
 
+  // SEO Optimization
+  const seoData = {
+    title: 'INITX Technologies - Leading Technology Solutions & Digital Innovation Platform',
+    description: 'Transform your business with cutting-edge AI development, cloud infrastructure, web development, and digital transformation services. Join thousands of satisfied clients worldwide.',
+    keywords: combineKeywords([
+      'technology solutions', 'AI development', 'artificial intelligence', 'machine learning', 'deep learning', 'neural networks',
+      'computer vision', 'natural language processing', 'speech recognition', 'image recognition', 'predictive modeling',
+      'cloud computing', 'cloud infrastructure', 'AWS services', 'Azure solutions', 'Google Cloud Platform', 'cloud migration',
+      'serverless computing', 'edge computing', 'hybrid cloud', 'multi-cloud', 'cloud security', 'cloud optimization',
+      'web development', 'React development', 'Vue.js', 'Angular', 'Node.js development', 'Express.js', 'Next.js',
+      'Python development', 'Django', 'Flask', 'FastAPI', 'Java development', 'Spring Boot', 'PHP development', 'Laravel',
+      'mobile app development', 'iOS development', 'Swift', 'Android development', 'Kotlin', 'React Native', 'Flutter development',
+      'Xamarin', 'Ionic', 'cross-platform apps', 'native mobile apps', 'progressive web apps', 'hybrid apps',
+      'digital transformation', 'enterprise solutions', 'startup technology', 'tech consulting', 'software engineering',
+      'custom software development', 'software architecture', 'system design', 'technical consulting', 'IT strategy',
+      'DevOps services', 'CI/CD pipeline', 'continuous integration', 'continuous deployment', 'containerization',
+      'Docker', 'Kubernetes', 'Jenkins', 'GitLab CI', 'GitHub Actions', 'microservices architecture', 'serverless architecture',
+      'cybersecurity solutions', 'penetration testing', 'security audit', 'vulnerability assessment', 'GDPR compliance',
+      'data protection', 'encryption', 'firewall', 'intrusion detection', 'security monitoring', 'threat intelligence',
+      'data analytics', 'big data', 'business intelligence', 'data science', 'predictive analytics', 'data visualization',
+      'machine learning models', 'statistical analysis', 'data mining', 'ETL processes', 'data warehousing',
+      'API development', 'REST API', 'GraphQL', 'SOAP services', 'webhook development', 'third-party integrations',
+      'microservices', 'API gateway', 'API security', 'API documentation', 'API testing', 'API monitoring',
+      'database design', 'MongoDB', 'PostgreSQL', 'MySQL', 'Redis', 'Elasticsearch', 'Cassandra', 'DynamoDB',
+      'data modeling', 'database optimization', 'database migration', 'NoSQL', 'SQL', 'data architecture',
+      'blockchain development', 'cryptocurrency', 'smart contracts', 'DeFi solutions', 'NFT development', 'Web3',
+      'Ethereum', 'Solidity', 'Bitcoin', 'crypto wallet', 'decentralized applications', 'consensus algorithms',
+      'IoT solutions', 'Internet of Things', 'embedded systems', 'sensor networks', 'industrial IoT', 'smart devices',
+      'MQTT', 'LoRaWAN', 'edge analytics', 'IoT security', 'device management', 'real-time monitoring',
+      'automation solutions', 'RPA', 'robotic process automation', 'workflow automation', 'business process automation',
+      'chatbots', 'virtual assistants', 'process optimization', 'digital workflows', 'task automation',
+      'tech innovation', 'emerging technologies', 'digital solutions', 'technology consulting', 'IT services',
+      'managed services', 'cloud consulting', 'digital strategy', 'technology roadmap', 'innovation consulting',
+      'software development company', 'technology partner', 'digital agency', 'innovation lab', 'tech startup',
+      'enterprise software', 'B2B solutions', 'B2C applications', 'white-label solutions', 'custom integrations',
+      'fintech solutions', 'payment processing', 'digital banking', 'insurtech', 'regtech', 'wealthtech',
+      'healthtech', 'telemedicine', 'health informatics', 'medical software', 'HIPAA compliance', 'EHR systems',
+      'edtech', 'e-learning platforms', 'LMS', 'educational software', 'online training', 'virtual classrooms',
+      'e-commerce development', 'marketplace development', 'shopping cart', 'payment gateway', 'inventory management',
+      'SaaS development', 'PaaS solutions', 'IaaS', 'multi-tenant architecture', 'subscription billing',
+      'agile development', 'scrum methodology', 'kanban', 'lean startup', 'MVP development', 'prototype development',
+      'UI/UX design', 'user experience', 'user interface', 'responsive design', 'mobile-first design', 'accessibility',
+      'performance optimization', 'scalability', 'high availability', 'load balancing', 'system architecture',
+      'quality assurance', 'software testing', 'automated testing', 'test-driven development', 'code review',
+      'technical support', 'maintenance', 'bug fixes', 'feature updates', 'system monitoring', 'performance tuning'
+    ])
+  };
+
+  useEffect(() => {
+    document.title = seoData.title;
+    
+    // Remove existing favicons first
+    const existingFavicons = document.querySelectorAll('link[rel*="icon"]');
+    existingFavicons.forEach(icon => icon.remove());
+    
+    // Add new favicon
+    const favicon = document.createElement('link');
+    favicon.rel = 'icon';
+    favicon.type = 'image/png';
+    favicon.href = '/logo.png';
+    document.head.appendChild(favicon);
+  }, []);
+
   useEffect(() => {
     fetchProjects();
   }, []);
@@ -787,51 +855,66 @@ const Home = () => {
   const features = [
     {
       icon: <Briefcase size={40} />,
-      title: "Portfolio Management",
-      description: "Create and manage stunning portfolios with our intuitive tools"
+      title: "AI Development Services",
+      description: "Custom artificial intelligence and machine learning solutions that transform your business operations and drive innovation"
     },
     {
       icon: <Users size={40} />,
-      title: "Client Collaboration",
-      description: "Seamless communication and feedback system with clients"
+      title: "Cloud Infrastructure",
+      description: "Scalable cloud solutions on AWS, Azure, and Google Cloud with expert migration and DevOps services"
     },
     {
       icon: <Zap size={40} />,
-      title: "Real-time Updates",
-      description: "Get instant notifications and project status updates"
+      title: "Web & Mobile Development",
+      description: "Modern web applications and native mobile apps built with cutting-edge technologies and best practices"
     },
     {
       icon: <Award size={40} />,
-      title: "Professional Showcase",
-      description: "Display your work with beautiful, responsive galleries"
+      title: "Digital Transformation",
+      description: "Strategic technology consulting to modernize your business processes and accelerate growth"
     }
   ];
 
   const testimonials = [
     {
-      text: "INITX transformed how I showcase my design work. The platform is intuitive and my clients love the collaboration features.",
+      text: "INITX transformed our business with their AI solutions. The machine learning models they developed increased our efficiency by 40% and reduced operational costs significantly.",
       author: "Sarah Johnson",
-      role: "UI/UX Designer"
+      role: "CTO, TechCorp"
     },
     {
-      text: "As a client, I appreciate how easy it is to provide feedback and track project progress. INITX makes collaboration effortless.",
+      text: "Their cloud migration services were exceptional. INITX helped us move to AWS seamlessly, and our application performance improved dramatically with zero downtime.",
       author: "Mike Chen",
-      role: "Product Manager"
+      role: "VP Engineering, StartupXYZ"
     },
     {
-      text: "The portfolio features are outstanding. I've received more inquiries since using INITX than any other platform.",
+      text: "The web application INITX built for us is outstanding. Modern, fast, and exactly what we needed to scale our business. Highly recommend their development team.",
       author: "Emma Davis",
-      role: "Freelance Designer"
+      role: "Founder, InnovateLab"
     }
   ];
 
   return (
     <>
       <SEO 
-        title="INITX - Professional UI/UX Design Platform"
-        description="Join thousands of designers on INITX. Showcase portfolios, collaborate with clients, and grow your design business with our professional platform."
-        keywords="UI/UX design, portfolio platform, design collaboration, web design, mobile app design, designer portfolio"
+        title="INITX Technologies - Leading Technology Solutions & Digital Innovation Platform"
+        description="Transform your business with cutting-edge AI development, cloud infrastructure, web development, and digital transformation services from INITX Technologies."
+        keywords={seoData.keywords}
+        type="website"
+        siteName="INITX Technologies"
       />
+      
+      <AdvancedSEO
+        title="INITX Technologies - Leading Technology Solutions & Digital Innovation Platform"
+        description="Transform your business with cutting-edge AI development, cloud infrastructure, web development, and digital transformation services from INITX Technologies."
+        keywords={seoData.keywords}
+        url={window.location.href}
+        image="https://initx.com/og-image.jpg"
+        type="website"
+      />
+      
+      <SEOSchema type="website" data={null} />
+      
+      <SEOPerformance />
       
       <SearchSection>
         <SearchContainer>
@@ -844,7 +927,7 @@ const Home = () => {
           <SearchBox>
             <SearchInput
               type="text"
-              placeholder="Search projects, designers, or categories..."
+              placeholder="Search AI solutions, cloud services, web development..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
@@ -861,14 +944,14 @@ const Home = () => {
           
           <SearchButtons>
             <SearchButton onClick={handleSearch}>INITX Search</SearchButton>
-            <SearchButton onClick={() => handleQuickSearch('Portfolio')}>I'm Feeling Lucky</SearchButton>
+            <SearchButton onClick={() => handleQuickSearch('AI Development')}>I'm Feeling Lucky</SearchButton>
           </SearchButtons>
           
           <QuickLinks>
-            <QuickLink onClick={() => handleQuickSearch('Web Design')}>Web Design</QuickLink>
-            <QuickLink onClick={() => handleQuickSearch('Mobile App')}>Mobile App</QuickLink>
-            <QuickLink onClick={() => handleQuickSearch('UI/UX')}>UI/UX</QuickLink>
-            <QuickLink onClick={() => handleQuickSearch('Branding')}>Branding</QuickLink>
+            <QuickLink onClick={() => handleQuickSearch('AI Development')}>AI Development</QuickLink>
+            <QuickLink onClick={() => handleQuickSearch('Cloud Solutions')}>Cloud Solutions</QuickLink>
+            <QuickLink onClick={() => handleQuickSearch('Web Development')}>Web Development</QuickLink>
+            <QuickLink onClick={() => handleQuickSearch('Mobile Apps')}>Mobile Apps</QuickLink>
           </QuickLinks>
         </SearchContainer>
       </SearchSection>
@@ -878,10 +961,23 @@ const Home = () => {
       </div>
 
       <Section>
-        <SectionTitle>Why Choose INITX?</SectionTitle>
+        <SectionTitle>Why Choose INITX Technologies?</SectionTitle>
         <SectionSubtitle>
-          We provide everything you need to showcase your design work and collaborate effectively with clients
+          We deliver cutting-edge technology solutions that transform businesses and drive innovation across industries
         </SectionSubtitle>
+        
+        {/* Rich Snippets Content */}
+        <div itemScope itemType="https://schema.org/TechArticle" style={{display: 'none'}}>
+          <h1 itemProp="headline">Best Technology Solutions Company in India - INITX Technologies</h1>
+          <div itemProp="author" itemScope itemType="https://schema.org/Organization">
+            <span itemProp="name">INITX Technologies</span>
+          </div>
+          <meta itemProp="datePublished" content="2024-01-01" />
+          <meta itemProp="dateModified" content="2024-01-01" />
+          <div itemProp="articleBody">
+            INITX Technologies is the leading technology solutions provider specializing in AI development, cloud infrastructure, web development, and digital transformation services for enterprises and startups.
+          </div>
+        </div>
         
         <FeaturesGrid>
           {features.map((feature, index) => (
@@ -900,9 +996,9 @@ const Home = () => {
       </Section>
 
       <Section>
-        <SectionTitle>Featured Projects</SectionTitle>
+        <SectionTitle>Featured Technology Solutions</SectionTitle>
         <SectionSubtitle>
-          Discover amazing work from our talented community of designers
+          Discover our innovative technology projects and successful client implementations
         </SectionSubtitle>
 
         <ProjectGrid>
@@ -1003,9 +1099,9 @@ const Home = () => {
 
       <TestimonialSection>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <SectionTitle>What Our Users Say</SectionTitle>
+          <SectionTitle>Client Success Stories</SectionTitle>
           <SectionSubtitle>
-            Join thousands of satisfied designers and clients who love INITX
+            See how INITX technology solutions have transformed businesses and accelerated growth
           </SectionSubtitle>
           
           <TestimonialGrid>
