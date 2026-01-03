@@ -127,7 +127,39 @@ const SectionTitle = styled.h2`
   font-size: 2.5rem;
   text-align: center;
   margin-bottom: 20px;
-  color: #87ceeb;
+  background: linear-gradient(45deg, #00ff41, #00ffff, #ff0080, #ffff00);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  position: relative;
+  animation: gamingGlow 3s ease-in-out infinite alternate;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #00ff41, #00ffff, #ff0080);
+    border-radius: 2px;
+    box-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+  }
+  
+  @keyframes gamingGlow {
+    from { 
+      text-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
+      filter: brightness(1);
+    }
+    to { 
+      text-shadow: 0 0 30px rgba(0, 255, 65, 0.8), 0 0 40px rgba(0, 255, 255, 0.4);
+      filter: brightness(1.2);
+    }
+  }
 `;
 
 const SectionSubtitle = styled.p`

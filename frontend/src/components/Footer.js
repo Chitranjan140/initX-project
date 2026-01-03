@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Palette, Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
-import INITXLogo from './INITXLogo';
+import NitXLogo from './NitXLogo';
 
 const FooterContainer = styled.footer`
   background: #1e293b;
@@ -120,7 +120,9 @@ const Footer = () => {
       <FooterContent>
         <FooterGrid>
           <FooterSection>
-            <INITXLogo color="white" />
+            <div style={{ transform: 'scale(0.7)', transformOrigin: 'left top' }}>
+              <NitXLogo />
+            </div>
             <p>
               Initiating Innovation with Technologies. 
               Empowering businesses with cutting-edge technology solutions and digital transformation services.

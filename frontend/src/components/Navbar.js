@@ -3,7 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { useAuth } from '../hooks/useAuth';
 import { User, LogOut } from 'lucide-react';
-import INITXLogo from './INITXLogo';
+import NitXLogo from './NitXLogo';
+
 
 const Nav = styled.nav`
   background: rgba(255, 255, 255, 0.1);
@@ -139,7 +140,7 @@ const Navbar = () => {
     <Nav isVisible={isVisible}>
       <NavContainer>
         <Logo to="/">
-          <INITXLogo color="white" />
+          <NitXLogo />
         </Logo>
         
         <NavLinks>

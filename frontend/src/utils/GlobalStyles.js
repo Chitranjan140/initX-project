@@ -9,7 +9,7 @@ const GlobalStyles = createGlobalStyle`
 
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: linear-gradient(135deg, #0a0a0a 0%, #1a0033 25%, #2d1b69 50%, #001133 75%, #000000 100%);
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #334155 50%, #475569 75%, #64748b 100%);
     background-attachment: fixed;
     min-height: 100vh;
     color: #ffffff;
@@ -26,25 +26,17 @@ const GlobalStyles = createGlobalStyle`
     width: 100%;
     height: 100%;
     background: 
-      radial-gradient(circle at 20% 80%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 80% 20%, rgba(255, 0, 128, 0.12) 0%, transparent 50%),
-      radial-gradient(circle at 40% 40%, rgba(138, 43, 226, 0.08) 0%, transparent 50%);
+      radial-gradient(circle at 20% 80%, rgba(0, 212, 255, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.06) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(99, 102, 241, 0.04) 0%, transparent 50%);
     pointer-events: none;
     z-index: -1;
-    animation: backgroundPulse 8s ease-in-out infinite alternate;
-  }
-  
-  @keyframes backgroundPulse {
-    0% { opacity: 0.7; }
-    100% { opacity: 1; }
   }
 
-  /* Hide scrollbar for webkit browsers */
   ::-webkit-scrollbar {
     display: none;
   }
 
-  /* Hide scrollbar for Firefox */
   html {
     scrollbar-width: none;
   }
@@ -56,12 +48,12 @@ const GlobalStyles = createGlobalStyle`
   }
 
   .card {
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(15, 23, 42, 0.8);
     backdrop-filter: blur(15px);
     border-radius: 20px;
     padding: 30px;
-    box-shadow: 0 20px 40px rgba(0, 255, 255, 0.2), 0 0 20px rgba(138, 43, 226, 0.1);
-    border: 1px solid rgba(0, 255, 255, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(0, 212, 255, 0.1);
+    border: 1px solid rgba(0, 212, 255, 0.2);
     color: #ffffff;
   }
 
@@ -79,14 +71,14 @@ const GlobalStyles = createGlobalStyle`
   }
 
   .btn-primary {
-    background: linear-gradient(135deg, #ff0080 0%, #00ffff 50%, #8a2be2 100%);
+    background: linear-gradient(135deg, #0ea5e9 0%, #00d4ff 50%, #3b82f6 100%);
     color: white;
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
   }
 
   .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(0, 255, 255, 0.4), 0 0 30px rgba(255, 0, 128, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4), 0 0 30px rgba(14, 165, 233, 0.3);
   }
 
   .form-group {
@@ -105,10 +97,10 @@ const GlobalStyles = createGlobalStyle`
   .form-group select {
     width: 100%;
     padding: 12px 16px;
-    border: 2px solid rgba(0, 255, 255, 0.3);
+    border: 2px solid rgba(0, 212, 255, 0.3);
     border-radius: 12px;
     font-size: 16px;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(15, 23, 42, 0.5);
     color: #ffffff;
     transition: border-color 0.3s ease;
   }
@@ -117,11 +109,10 @@ const GlobalStyles = createGlobalStyle`
   .form-group textarea:focus,
   .form-group select:focus {
     outline: none;
-    border-color: #00ffff;
-    box-shadow: 0 0 0 3px rgba(0, 255, 255, 0.2);
+    border-color: #00d4ff;
+    box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.2);
   }
 
-  /* Accessibility improvements */
   @media (prefers-reduced-motion: reduce) {
     * {
       animation-duration: 0.01ms !important;
@@ -130,13 +121,12 @@ const GlobalStyles = createGlobalStyle`
     }
   }
 
-  /* Focus styles for accessibility */
   button:focus,
   a:focus,
   input:focus,
   textarea:focus,
   select:focus {
-    outline: 2px solid #00ffff;
+    outline: 2px solid #00d4ff;
     outline-offset: 2px;
   }
 `;

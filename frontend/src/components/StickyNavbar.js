@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
-import INITXLogo from './INITXLogo';
+import NitXLogo from './NitXLogo';
+
 
 const Nav = styled(motion.nav)`
   background: ${props => props.scrolled ? 'rgba(15, 23, 42, 0.95)' : 'rgba(15, 23, 42, 0.9)'};
@@ -204,7 +205,7 @@ const StickyNavbar = () => {
     >
       <NavContainer>
         <Logo to="/" scrolled={scrolled}>
-          <INITXLogo color="white" />
+          <NitXLogo />
         </Logo>
         
         <NavLinks isOpen={mobileMenuOpen}>
