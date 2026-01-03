@@ -81,40 +81,40 @@ const PricingCard = styled(motion.div)`
 const Services = () => {
   const services = [
     {
-      icon: <Palette size={40} />,
-      title: "UI/UX Design",
-      description: "Complete design solutions from wireframes to high-fidelity prototypes",
-      features: ["User Research", "Wireframing", "Prototyping", "Design Systems"]
+      icon: <Globe size={40} />,
+      title: "MERN Stack Development",
+      description: "Full stack web applications using MongoDB, Express.js, React, and Node.js",
+      features: ["React Frontend", "Node.js Backend", "MongoDB Database", "RESTful APIs"]
     },
     {
       icon: <Smartphone size={40} />,
-      title: "Mobile App Design",
-      description: "Native and cross-platform mobile application design",
-      features: ["iOS Design", "Android Design", "App Store Assets", "User Testing"]
-    },
-    {
-      icon: <Globe size={40} />,
-      title: "Web Design",
-      description: "Responsive websites that convert visitors into customers",
-      features: ["Responsive Design", "Landing Pages", "E-commerce", "CMS Integration"]
+      title: "Custom Software Development",
+      description: "Tailored software solutions built to meet your specific business requirements",
+      features: ["Custom Applications", "System Integration", "Database Design", "Performance Optimization"]
     },
     {
       icon: <Package size={40} />,
-      title: "Brand Identity",
-      description: "Complete branding solutions for your business",
-      features: ["Logo Design", "Brand Guidelines", "Marketing Materials", "Brand Strategy"]
+      title: "Web Application Development",
+      description: "Modern, responsive web applications with cutting-edge technologies",
+      features: ["Responsive Design", "Progressive Web Apps", "E-commerce Solutions", "CMS Development"]
     },
     {
       icon: <Zap size={40} />,
-      title: "Design Systems",
-      description: "Scalable design systems for consistent user experiences",
-      features: ["Component Libraries", "Style Guides", "Documentation", "Maintenance"]
+      title: "API Development & Integration",
+      description: "Robust APIs and seamless third-party service integrations",
+      features: ["REST APIs", "GraphQL", "Third-party Integrations", "Microservices"]
     },
     {
       icon: <Shield size={40} />,
-      title: "Consulting",
-      description: "Expert design consultation and strategy services",
-      features: ["Design Audits", "Strategy Planning", "Team Training", "Process Optimization"]
+      title: "Cloud Solutions",
+      description: "Scalable cloud infrastructure and deployment solutions",
+      features: ["AWS Deployment", "Docker Containers", "CI/CD Pipelines", "Cloud Migration"]
+    },
+    {
+      icon: <Palette size={40} />,
+      title: "Technical Consulting",
+      description: "Expert technical guidance and architecture planning",
+      features: ["Technology Assessment", "Architecture Design", "Code Review", "Performance Audits"]
     }
   ];
 
@@ -158,7 +158,7 @@ const Services = () => {
           transition={{ delay: 0.2 }}
           style={{ fontSize: '1.2rem', opacity: 0.9 }}
         >
-          Comprehensive design solutions for every business need
+          Comprehensive technology solutions for every business need
         </motion.p>
       </Hero>
 
@@ -186,9 +186,9 @@ const Services = () => {
       </ServicesGrid>
 
       <PricingSection>
-        <h2 style={{ fontSize: '2.5rem', marginBottom: '20px', color: '#333' }}>Pricing Plans</h2>
+        <h2 style={{ fontSize: '2.5rem', marginBottom: '20px', color: '#333' }}>Technology Packages</h2>
         <p style={{ fontSize: '1.2rem', color: '#666', marginBottom: '50px' }}>
-          Choose the perfect plan for your design needs
+          Choose the perfect technology package for your project needs
         </p>
         
         <PricingGrid>

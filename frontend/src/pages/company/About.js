@@ -51,10 +51,10 @@ const IconWrapper = styled.div`
 
 const About = () => {
   const values = [
-    { icon: <Target size={24} />, title: "Innovation", desc: "Cutting-edge solutions for modern design challenges" },
-    { icon: <Users size={24} />, title: "Collaboration", desc: "Building bridges between designers and clients" },
-    { icon: <Award size={24} />, title: "Excellence", desc: "Delivering quality that exceeds expectations" },
-    { icon: <Globe size={24} />, title: "Global Reach", desc: "Connecting talent worldwide" }
+    { icon: <Target size={24} />, title: "Innovation", desc: "Cutting-edge technology solutions for modern business challenges" },
+    { icon: <Users size={24} />, title: "Collaboration", desc: "Working closely with clients to deliver exceptional results" },
+    { icon: <Award size={24} />, title: "Excellence", desc: "Delivering high-quality technology solutions that exceed expectations" },
+    { icon: <Globe size={24} />, title: "Global Reach", desc: "Serving businesses worldwide with scalable technology solutions" }
   ];
 
   return (
@@ -73,7 +73,7 @@ const About = () => {
           transition={{ delay: 0.2 }}
           style={{ fontSize: '1.2rem', opacity: 0.9 }}
         >
-          Empowering designers and transforming digital experiences since 2020
+          Initiating Innovation with Technologies - Empowering businesses with cutting-edge technology solutions since 2020
         </motion.p>
       </Hero>
 
@@ -81,10 +81,10 @@ const About = () => {
         <h2 style={{ fontSize: '2.5rem', textAlign: 'center', marginBottom: '30px', color: '#333' }}>Our Story</h2>
         <div style={{ maxWidth: '800px', margin: '0 auto', fontSize: '1.1rem', lineHeight: '1.8', color: '#666' }}>
           <p style={{ marginBottom: '20px' }}>
-            INITX was founded with a simple mission: to bridge the gap between talented designers and clients who need exceptional digital experiences. We recognized that the design industry needed a platform that could streamline collaboration while showcasing creativity.
+            INITX was founded with a mission to initiate innovation with technologies. We bridge the gap between businesses and cutting-edge technology solutions, delivering AI development, cloud infrastructure, web development, and digital transformation services.
           </p>
           <p>
-            Today, we're proud to serve over 10,000 designers and countless clients worldwide, facilitating millions of dollars in design projects and helping shape the future of digital design.
+            Today, we're proud to serve enterprises and startups worldwide, helping them leverage advanced technologies to achieve their goals and drive digital transformation.
           </p>
         </div>
       </Section>
@@ -110,7 +110,7 @@ const About = () => {
       <Section style={{ background: '#f8fafc', padding: '60px 40px', borderRadius: '20px', textAlign: 'center' }}>
         <h2 style={{ fontSize: '2.5rem', marginBottom: '20px', color: '#333' }}>Join Our Mission</h2>
         <p style={{ fontSize: '1.2rem', color: '#666', marginBottom: '30px' }}>
-          Be part of the design revolution. Whether you're a designer or a client, INITX is your gateway to exceptional digital experiences.
+          Partner with INITX for your next technology project. Whether you need AI development, cloud solutions, web applications, or digital transformation, INITX is your trusted technology partner.
         </p>
         <button className="btn btn-primary">Get Started Today</button>
       </Section>

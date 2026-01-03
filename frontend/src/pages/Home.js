@@ -369,15 +369,16 @@ const AuthorAvatar = styled.div`
   font-weight: 600;
 `;
 
-const SearchSection = styled.section`
-  padding: 60px 20px 60px;
-  text-align: center;
-  min-height: 50vh;
+const HeroSection = styled.section`
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a0033 30%, #330066 60%, #000000 100%);
   position: relative;
   overflow: hidden;
+  padding-top: 80px;
+  will-change: transform;
   
   &::before {
     content: '';
@@ -386,49 +387,67 @@ const SearchSection = styled.section`
     left: 0;
     right: 0;
     bottom: 0;
-    background: 
-      radial-gradient(circle at 25% 25%, rgba(255,153,51,0.08) 0%, transparent 40%),
-      radial-gradient(circle at 75% 75%, rgba(19,136,8,0.08) 0%, transparent 40%),
-      radial-gradient(circle at 50% 50%, rgba(255,255,255,0.03) 0%, transparent 50%);
+    background: radial-gradient(circle at 20% 80%, rgba(255, 0, 150, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 255, 255, 0.3) 0%, transparent 50%);
     pointer-events: none;
-    animation: networkPulse 4s ease-in-out infinite alternate;
+    animation: pulse 4s ease-in-out infinite alternate;
+    will-change: opacity;
   }
   
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: 
-      linear-gradient(90deg, rgba(255,153,51,0.05) 1px, transparent 1px),
-      linear-gradient(rgba(19,136,8,0.05) 1px, transparent 1px);
-    background-size: 60px 60px;
-    animation: networkGrid 15s linear infinite;
-    pointer-events: none;
-    opacity: 0.4;
-  }
-  
-  @keyframes networkPulse {
-    0% { opacity: 0.7; }
+  @keyframes pulse {
+    0% { opacity: 0.8; }
     100% { opacity: 1; }
   }
   
-  @keyframes networkGrid {
-    0% { transform: translate(0, 0); }
-    100% { transform: translate(60px, 60px); }
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    33% {
+      transform: translateY(-20px) rotate(120deg);
+    }
+    66% {
+      transform: translateY(10px) rotate(240deg);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    padding-top: 60px;
+    min-height: 90vh;
+  }
+  
+  @media (max-width: 480px) {
+    padding-top: 40px;
+    min-height: 80vh;
   }
 `;
 
-const SearchContainer = styled.div`
-  max-width: 450px;
+const HeroContainer = styled.div`
+  max-width: 1200px;
   margin: 0 auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
   position: relative;
   z-index: 2;
   
+  @media (max-width: 968px) {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+    padding: 0 15px;
+  }
+  
   @media (max-width: 768px) {
-    max-width: 90%;
+    gap: 30px;
+    padding: 0 10px;
+  }
+  
+  @media (max-width: 480px) {
+    gap: 20px;
+    padding: 0 15px;
   }
 `;
 
@@ -715,6 +734,29 @@ const QuickLink = styled.a`
   }
 `;
 
+const TechGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  margin-bottom: 80px;
+`;
+
+const TechCard = styled(motion.div)`
+  background: rgba(135,206,235,0.1);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(135,206,235,0.3);
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    border-color: rgba(135,206,235,0.6);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  }
+`;
+
 const Home = () => {
   const [projects, setProjects] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
@@ -723,11 +765,14 @@ const Home = () => {
     likes: Math.floor(Math.random() * 50) + 20
   }));
 
-  // SEO Optimization
+  // SEO Optimization with new brand guidelines
   const seoData = {
-    title: 'INITX Technologies - Leading Technology Solutions & Digital Innovation Platform',
-    description: 'Transform your business with cutting-edge AI development, cloud infrastructure, web development, and digital transformation services. Join thousands of satisfied clients worldwide.',
+    title: 'InitX Technologies - Initiating Innovation with Expertise',
+    description: 'InitX, powered by InitX Technologies, specializes in web development, custom software solutions, AI integration, and digital transformation. We help startups and businesses build scalable, secure, and high-performance digital products.',
     keywords: combineKeywords([
+      'InitX Technologies', 'InitX', 'web development', 'custom software solutions', 'AI integration', 'digital transformation',
+      'scalable digital products', 'modern technology brand', 'startup technology solutions', 'business automation',
+      'React development', 'Node.js', 'MongoDB', 'cloud systems', 'UI/UX design', 'mobile applications',
       'technology solutions', 'AI development', 'artificial intelligence', 'machine learning', 'deep learning', 'neural networks',
       'computer vision', 'natural language processing', 'speech recognition', 'image recognition', 'predictive modeling',
       'cloud computing', 'cloud infrastructure', 'AWS services', 'Azure solutions', 'Google Cloud Platform', 'cloud migration',
@@ -852,26 +897,42 @@ const Home = () => {
     console.log(`Quick search: ${query}`);
   };
 
-  const features = [
+  const techStack = [
+    { name: 'React', category: 'Frontend' },
+    { name: 'Node.js', category: 'Backend' },
+    { name: 'Python', category: 'Backend' },
+    { name: 'MongoDB', category: 'Database' },
+    { name: 'AWS', category: 'Cloud' },
+    { name: 'Docker', category: 'DevOps' },
+    { name: 'TypeScript', category: 'Frontend' },
+    { name: 'PostgreSQL', category: 'Database' }
+  ];
+
+  const services = [
     {
       icon: <Briefcase size={40} />,
-      title: "AI Development Services",
-      description: "Custom artificial intelligence and machine learning solutions that transform your business operations and drive innovation"
+      title: "Web Development",
+      description: "Custom web applications built with React, Node.js, and modern frameworks. Responsive, fast, and SEO-optimized solutions for your business needs."
     },
     {
       icon: <Users size={40} />,
-      title: "Cloud Infrastructure",
-      description: "Scalable cloud solutions on AWS, Azure, and Google Cloud with expert migration and DevOps services"
+      title: "Mobile App Development",
+      description: "Native iOS and Android apps, React Native, and Flutter development. Cross-platform solutions that deliver exceptional user experiences."
     },
     {
       icon: <Zap size={40} />,
-      title: "Web & Mobile Development",
-      description: "Modern web applications and native mobile apps built with cutting-edge technologies and best practices"
+      title: "AI & Machine Learning",
+      description: "Artificial intelligence solutions, machine learning models, and data analytics to automate processes and drive intelligent decision-making."
     },
     {
       icon: <Award size={40} />,
+      title: "Cloud Solutions",
+      description: "AWS, Azure, and Google Cloud services. Cloud migration, serverless architecture, and scalable infrastructure for modern applications."
+    },
+    {
+      icon: <CheckCircle size={40} />,
       title: "Digital Transformation",
-      description: "Strategic technology consulting to modernize your business processes and accelerate growth"
+      description: "Complete digital transformation services including process automation, system integration, and technology consulting for enterprises."
     }
   ];
 
@@ -896,16 +957,16 @@ const Home = () => {
   return (
     <>
       <SEO 
-        title="INITX Technologies - Leading Technology Solutions & Digital Innovation Platform"
-        description="Transform your business with cutting-edge AI development, cloud infrastructure, web development, and digital transformation services from INITX Technologies."
+        title="InitX Technologies - Initiating Innovation with Expertise"
+        description="InitX, powered by InitX Technologies, specializes in web development, custom software solutions, AI integration, and digital transformation. We help startups and businesses build scalable, secure, and high-performance digital products."
         keywords={seoData.keywords}
         type="website"
-        siteName="INITX Technologies"
+        siteName="InitX Technologies"
       />
       
       <AdvancedSEO
-        title="INITX Technologies - Leading Technology Solutions & Digital Innovation Platform"
-        description="Transform your business with cutting-edge AI development, cloud infrastructure, web development, and digital transformation services from INITX Technologies."
+        title="InitX Technologies - Initiating Innovation with Expertise"
+        description="InitX, powered by InitX Technologies, specializes in web development, custom software solutions, AI integration, and digital transformation. We help startups and businesses build scalable, secure, and high-performance digital products."
         keywords={seoData.keywords}
         url={window.location.href}
         image="https://initx.com/og-image.jpg"
@@ -916,80 +977,94 @@ const Home = () => {
       
       <SEOPerformance />
       
-      <SearchSection>
-        <SearchContainer>
-          <SearchTitle>
-            <span className="in">IN</span>
-            <span className="it">IT</span>
-            <span className="x">X</span>
-          </SearchTitle>
+      <HeroSection>
+        <HeroContainer>
+          <div>
+            <h1 style={{
+              fontSize: '4rem',
+              fontWeight: '900',
+              marginBottom: '30px',
+              color: '#fff',
+              lineHeight: '1.2',
+              background: 'linear-gradient(135deg, #fff 0%, #87ceeb 50%, #fff 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent'
+            }}>
+              Initiating Innovation with Technologies
+            </h1>
+            
+            <h2 style={{
+              fontSize: '1.5rem',
+              fontWeight: '600',
+              marginBottom: '25px',
+              color: '#87ceeb',
+              lineHeight: '1.4'
+            }}>
+              INITX is a modern technology brand by INITX Technologies, delivering scalable and future-ready digital solutions.
+            </h2>
+            
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              position: 'relative',
+              minHeight: '200px',
+              marginTop: '40px'
+            }}>
+              <div style={{
+                width: '200px',
+                height: '200px',
+                background: 'linear-gradient(135deg, rgba(138, 43, 226, 0.3), rgba(0, 255, 255, 0.3))',
+                borderRadius: '50%',
+                filter: 'blur(80px)',
+                animation: 'float 6s ease-in-out infinite'
+              }}></div>
+            </div>
+          </div>
           
-          <SearchBox>
-            <SearchInput
-              type="text"
-              placeholder="Search AI solutions, cloud services, web development..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
-            />
-            <SearchIcons>
-              <IconButton className="camera" onClick={handleCameraSearch} title="Search by image">
-                <Camera size={20} />
-              </IconButton>
-              <IconButton className="mic" onClick={handleVoiceSearch} title="Search by voice">
-                <Mic size={20} />
-              </IconButton>
-            </SearchIcons>
-          </SearchBox>
-          
-          <SearchButtons>
-            <SearchButton onClick={handleSearch}>INITX Search</SearchButton>
-            <SearchButton onClick={() => handleQuickSearch('AI Development')}>I'm Feeling Lucky</SearchButton>
-          </SearchButtons>
-          
-          <QuickLinks>
-            <QuickLink onClick={() => handleQuickSearch('AI Development')}>AI Development</QuickLink>
-            <QuickLink onClick={() => handleQuickSearch('Cloud Solutions')}>Cloud Solutions</QuickLink>
-            <QuickLink onClick={() => handleQuickSearch('Web Development')}>Web Development</QuickLink>
-            <QuickLink onClick={() => handleQuickSearch('Mobile Apps')}>Mobile Apps</QuickLink>
-          </QuickLinks>
-        </SearchContainer>
-      </SearchSection>
+          <div>
+            <p style={{
+              fontSize: '1.1rem',
+              marginBottom: '40px',
+              color: 'rgba(255, 255, 255, 0.9)',
+              lineHeight: '1.6'
+            }}>
+              INITX, powered by INITX Technologies, specializes in web development, custom software solutions, AI integration, and digital transformation. We help startups and businesses build scalable, secure, and high-performance digital products using modern technologies and expert-driven development practices.
+            </p>
+            
+            <div style={{
+              display: 'flex',
+              gap: '20px',
+              marginBottom: '40px'
+            }}>
+              <SearchButton onClick={() => alert('Get Free Consultation clicked!')}>Get Free Consultation</SearchButton>
+              <SearchButton onClick={() => alert('Explore Services clicked!')}>Explore Services</SearchButton>
+            </div>
+          </div>
+        </HeroContainer>
+      </HeroSection>
 
       <div className="container">
         <HeroCarousel />
       </div>
 
       <Section>
-        <SectionTitle>Why Choose INITX Technologies?</SectionTitle>
+        <SectionTitle>Our Technology Services</SectionTitle>
         <SectionSubtitle>
-          We deliver cutting-edge technology solutions that transform businesses and drive innovation across industries
+          Comprehensive technology solutions designed to accelerate your business growth and digital transformation
         </SectionSubtitle>
         
-        {/* Rich Snippets Content */}
-        <div itemScope itemType="https://schema.org/TechArticle" style={{display: 'none'}}>
-          <h1 itemProp="headline">Best Technology Solutions Company in India - INITX Technologies</h1>
-          <div itemProp="author" itemScope itemType="https://schema.org/Organization">
-            <span itemProp="name">INITX Technologies</span>
-          </div>
-          <meta itemProp="datePublished" content="2024-01-01" />
-          <meta itemProp="dateModified" content="2024-01-01" />
-          <div itemProp="articleBody">
-            INITX Technologies is the leading technology solutions provider specializing in AI development, cloud infrastructure, web development, and digital transformation services for enterprises and startups.
-          </div>
-        </div>
-        
         <FeaturesGrid>
-          {features.map((feature, index) => (
+          {services.map((service, index) => (
             <FeatureCard
               key={index}
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
             >
-              <FeatureIcon>{feature.icon}</FeatureIcon>
-              <h3 style={{ marginBottom: '15px', color: '#87ceeb' }}>{feature.title}</h3>
-              <p style={{ color: '#ffffff', lineHeight: '1.6' }}>{feature.description}</p>
+              <FeatureIcon>{service.icon}</FeatureIcon>
+              <h3 style={{ marginBottom: '15px', color: '#87ceeb', fontSize: '1.4rem', fontWeight: '600' }}>{service.title}</h3>
+              <p style={{ color: '#ffffff', lineHeight: '1.6' }}>{service.description}</p>
             </FeatureCard>
           ))}
         </FeaturesGrid>
@@ -1097,6 +1172,29 @@ const Home = () => {
       
       <TrustSignals />
 
+      <Section>
+        <SectionTitle>Our Technology Stack</SectionTitle>
+        <SectionSubtitle>
+          We use cutting-edge technologies and frameworks to build robust, scalable, and modern solutions
+        </SectionSubtitle>
+        
+        <TechGrid>
+          {techStack.map((tech, index) => (
+            <TechCard
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+            >
+              <h4 style={{ color: '#87ceeb', marginBottom: '8px', fontSize: '1.1rem', fontWeight: '600' }}>{tech.name}</h4>
+              <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.9rem' }}>{tech.category}</p>
+            </TechCard>
+          ))}
+        </TechGrid>
+      </Section>
+
+      <TrustSignals />
+
       <TestimonialSection>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <SectionTitle>Client Success Stories</SectionTitle>
@@ -1132,6 +1230,21 @@ const Home = () => {
           </TestimonialGrid>
         </div>
       </TestimonialSection>
+
+      <CTABanner />
+
+      <Section>
+        <div style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto' }}>
+          <h2 style={{ fontSize: '2.5rem', color: '#87ceeb', marginBottom: '20px' }}>Ready to Transform Your Business?</h2>
+          <p style={{ fontSize: '1.2rem', color: '#ffffff', marginBottom: '40px', lineHeight: '1.6' }}>
+            Let's discuss your project and build something amazing together. Get a free consultation and see how InitX Technologies can accelerate your digital transformation.
+          </p>
+          <div style={{ display: 'flex', gap: '20px', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <SearchButton onClick={() => alert('Get Free Consultation clicked!')}>Get Free Consultation</SearchButton>
+            <SearchButton onClick={() => alert('View Our Portfolio clicked!')}>View Our Portfolio</SearchButton>
+          </div>
+        </div>
+      </Section>
 
       <CTABanner />
 

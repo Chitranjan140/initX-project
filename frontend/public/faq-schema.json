@@ -1,0 +1,46 @@
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What services does INITX Technology Solutions provide?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "INITX provides comprehensive technology solutions including AI development, machine learning, cloud computing, web development, mobile app development, digital transformation, cybersecurity, and custom software development services."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How can INITX help with digital transformation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "INITX helps businesses undergo digital transformation by implementing modern technologies, automating processes, migrating to cloud platforms, developing custom software solutions, and integrating AI/ML capabilities to improve efficiency and competitiveness."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What makes INITX different from other technology companies?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "INITX stands out through our motto 'Initiating Innovation with Technologies'. We combine cutting-edge AI, cloud expertise, and custom development with a focus on scalable, future-ready solutions that drive real business results."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does INITX work with startups and enterprises?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, INITX serves both startups and enterprises. We provide scalable solutions that grow with your business, from MVP development for startups to enterprise-grade systems for large organizations."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How can I get started with INITX services?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Contact INITX through our website at initx.online, email hello@initx.online, or call +1-555-INITX-TECH for a free consultation. We'll discuss your project requirements and provide a customized solution."
+      }
+    }
+  ]
+}

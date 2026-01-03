@@ -122,21 +122,21 @@ const Footer = () => {
           <FooterSection>
             <INITXLogo color="white" />
             <p>
-              Empowering designers and transforming digital experiences. 
-              Join thousands of professionals who trust INITX for their design needs.
+              Initiating Innovation with Technologies. 
+              Empowering businesses with cutting-edge technology solutions and digital transformation services.
             </p>
             
             <ContactInfo>
               <Mail size={16} />
-              <a href="mailto:hello@initx.com" style={{ color: 'inherit', textDecoration: 'none' }}>hello@initx.com</a>
+              <a href="mailto:hello@initx.online" style={{ color: 'inherit', textDecoration: 'none' }}>hello@initx.online</a>
             </ContactInfo>
             <ContactInfo>
               <Phone size={16} />
-              +1 (555) 123-4567
+              +91-98765-43210
             </ContactInfo>
             <ContactInfo>
               <MapPin size={16} />
-              123 Design Street, San Francisco, CA 94102
+              123 Tech Street, Vadodara, Gujarat 390001
             </ContactInfo>
             
             <SocialLinks>

@@ -4,6 +4,8 @@ import { AuthProvider } from './hooks/useAuth';
 import StickyNavbar from './components/StickyNavbar';
 import Footer from './components/Footer';
 import WhatsApp from './components/WhatsApp';
+import GoogleAnalytics from './components/GoogleAnalytics';
+import AdvancedSEOOptimization from './components/AdvancedSEOOptimization';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -12,8 +14,12 @@ import About from './pages/company/About';
 import Products from './pages/Products';
 import News from './pages/News';
 import Contact from './pages/company/Contact';
+import Services from './pages/company/Services';
 import Careers from './pages/company/Careers';
 import LogoShowcase from './pages/LogoShowcase';
+import Privacy from './pages/Privacy';
+import Terms from './pages/Terms';
+import Cookies from './pages/Cookies';
 import GlobalStyles from './utils/GlobalStyles';
 import styled from 'styled-components';
 
@@ -51,12 +57,15 @@ function App() {
     <AuthProvider>
       <Router>
         <GlobalStyles />
+        <GoogleAnalytics measurementId="G-INITX2024TECH" />
+        <AdvancedSEOOptimization />
         <StickyNavbar />
         <TricolorLine />
         <div style={{ paddingTop: '70px' }}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
+            <Route path="/services" element={<Services />} />
             <Route path="/products" element={<Products />} />
             <Route path="/news" element={<News />} />
             <Route path="/careers" element={<Careers />} />
@@ -65,6 +74,9 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/terms" element={<Terms />} />
+            <Route path="/cookies" element={<Cookies />} />
           </Routes>
         </div>
         <Footer />

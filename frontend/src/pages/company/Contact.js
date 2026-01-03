@@ -88,8 +88,8 @@ const Contact = () => {
   const [map, setMap] = useState(null);
   const [userMarker, setUserMarker] = useState(null);
 
-  // Company location (San Francisco)
-  const companyLocation = { lat: 37.7749, lng: -122.4194 };
+  // Company location (Vadodara, Gujarat)
+  const companyLocation = { lat: 22.3072, lng: 73.1812 };
 
   useEffect(() => {
     // Using embedded iframe - no API loading needed
@@ -160,17 +160,17 @@ const Contact = () => {
     {
       icon: <Mail size={24} />,
       title: "Email Us",
-      details: "hello@initx.com\nsupport@initx.com"
+      details: "hello@initx.online\nsupport@initx.online"
     },
     {
       icon: <Phone size={24} />,
       title: "Call Us",
-      details: "+1 (555) 123-4567\n+1 (555) 987-6543"
+      details: "+91-98765-43210\n+91-98765-43211"
     },
     {
       icon: <MapPin size={24} />,
       title: "Visit Us",
-      details: "123 Design Street\nSan Francisco, CA 94102"
+      details: "123 Tech Street\nVadodara, Gujarat 390001"
     },
     {
       icon: <Clock size={24} />,
@@ -302,7 +302,7 @@ const Contact = () => {
       <MapSection>
         <h2 style={{ fontSize: '2.5rem', marginBottom: '20px', color: '#333' }}>Find Us</h2>
         <p style={{ fontSize: '1.2rem', color: '#666', marginBottom: '40px' }}>
-          Visit our office in the heart of San Francisco
+          Visit our office in the heart of Vadodara, Gujarat
         </p>
         
         <div style={{
@@ -314,7 +314,7 @@ const Contact = () => {
           boxShadow: '0 10px 30px rgba(0,0,0,0.1)'
         }}>
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d50372.12!2d-122.4194!3d37.7749!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80859a6d00690021%3A0x4a501367f076adff!2sSan%20Francisco%2C%20CA%2C%20USA!5e0!3m2!1sen!2sus!4v1640995200000!5m2!1sen!2sus"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58911.766!2d73.1812!3d22.3072!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395fcf31e4b2b5b7%3A0x2b2b2b2b2b2b2b2b!2sVadodara%2C%20Gujarat%2C%20India!5e0!3m2!1sen!2sin!4v1640995200000!5m2!1sen!2sin"
             width="100%"
             height="100%"
             style={{ border: 0 }}

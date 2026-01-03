@@ -19,7 +19,7 @@ Allow: /blog/
 Allow: /careers/
 
 # Sitemap location
-Sitemap: https://initx.com/sitemap.xml
+Sitemap: https://initx.online/sitemap.xml
 
 # Crawl delay (optional)
 Crawl-delay: 1
